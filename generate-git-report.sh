@@ -24,7 +24,10 @@ if [ -f "git-log-`date -I`.txt" ]; then
 fi
 while getopts "r:" opt; do
 	case $opt in
-		r) repos+=("$OPTARG");;
+		r) 
+		set -f
+		IFS=' '
+		repos+=($OPTARG);;
 	esac
 done
 if [ ${#repos[@]} -eq 0 ]; then
